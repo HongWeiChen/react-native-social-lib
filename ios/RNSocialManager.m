@@ -72,11 +72,11 @@ RCT_EXPORT_METHOD(isQQInstalled:(RCTPromiseResolveBlock)succeed) {
 
 
 RCT_EXPORT_METHOD(shareToWeixin:(NSDictionary *)params
-                  succeed:(RCTPromiseResolveBlock)succeed
+                  succeed:(RCTResponseSenderBlock)succeed
                   failed:(RCTResponseErrorBlock)failed) {
     [self dispatch_main_block:^{
         NSString *shareType = params[@"shareType"];
-        
+
         WXMediaMessage *msg = [WXMediaMessage message];
         msg.title = params[@"title"];
         msg.description = params[@"description"];
@@ -184,10 +184,10 @@ RCT_EXPORT_METHOD(shareToWeixin:(NSDictionary *)params
 }
 
 - (void)handlerSuccess:(BOOL)success
-             succeed:(RCTPromiseResolveBlock)succeed
+             succeed:(RCTResponseSenderBlock)succeed
               failed:(RCTResponseErrorBlock)failed {
     if (!success) {
-        succeed(@"success");
+        succeed(@[@"success"]);
     } else {
         NSError *error = [NSError errorWithDomain:ShareToWeixinErrorDomain code:-1 userInfo:nil];
         failed(error);

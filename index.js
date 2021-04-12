@@ -1,12 +1,12 @@
 
 import { NativeModules } from 'react-native';
 
-const { RNSocialManagerModules } = NativeModules;
+const SocialModules = NativeModules.RNSocialManager;
 
-export default class RNSocialManager {
+export default class SocialManager {
 
-    static share(params, succeed, failed) {
-        RNSocialManagerModules.shareToWeixin(params, succeed, failed)
+    static shareToWeixin(params, succeed, failed) {
+        SocialModules.shareToWeixin(params, succeed, failed)
     }
 
 };
