@@ -1,31 +1,31 @@
 {
-  "name": "react-native-social-lib",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "react-native"
-  ],
-  "author": {
-      "name": "chenhongwei",
-      "email": "5293292@qq.com"
-  },
-  "license": "MIT",
-  "devDependencies": {
-      "react": "16.8.3",
-      "react-native": "^0.59.1"
-  },
-  "peerDependencies": {
-      "react": "16.8.3"
-  },
-  "dependencies": {
-      "prop-types": "^15.6.0"
-  },
-  "repository": {
-      "type": "git",
-      "url": "https://github.com/HongWeiChen/react-native-social-lib.git"
-  }
+    "name": "react-native-social-lib",
+    "version": "1.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "react-native"
+    ],
+    "author": {
+        "name": "chenhongwei",
+        "email": "5293292@qq.com"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "react": "16.8.3",
+        "react-native": "^0.59.1"
+    },
+    "peerDependencies": {
+        "react": "16.8.3"
+    },
+    "dependencies": {
+        "prop-types": "^15.6.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/HongWeiChen/react-native-social-lib.git"
+    }
 }
