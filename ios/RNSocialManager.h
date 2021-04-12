@@ -7,5 +7,7 @@
 
 @interface RNSocialManager : NSObject <RCTBridgeModule>
 
++ (void)registerWeixin:(NSString *)appId universalLink:(NSString *)universalLink;
+
 @end
   

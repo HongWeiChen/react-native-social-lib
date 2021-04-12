@@ -39,9 +39,15 @@ static ShareToWeixinTypes getShareToWeixinTypes(NSString *string) {
     dispatch_async([self methodQueue], block);
 }
 
+/// Application中调用
++ (void)registerWeixin:(NSString *)appId universalLink:(NSString *)universalLink {
+    [WXApi registerApp:appId universalLink:universalLink];
+}
+
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(registerWeixin:(NSString *)appId universalLink:(NSString *)universalLink) {
+    // js中调用（一般用不上）
     [self dispatch_main_block:^{
         // 注册微信
         [WXApi registerApp:appId universalLink:universalLink];
