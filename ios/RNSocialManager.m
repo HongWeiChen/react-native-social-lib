@@ -1,6 +1,7 @@
 
 #import "RNSocialManager.h"
 #import "WXApi.h"
+#import <TencentOpenAPI/TencentOpenApiUmbrellaHeader.h>
 
 typedef NS_ENUM(NSInteger, ShareToWeixinTypes) {
     ShareToWeixinTypesText,
@@ -33,31 +34,41 @@ static ShareToWeixinTypes getShareToWeixinTypes(NSString *string) {
 {
     return dispatch_get_main_queue();
 }
-RCT_EXPORT_MODULE()
+
+- (void)dispatch_main_block:(void (^)(void))block {
+    dispatch_async([self methodQueue], block);
+}
 
 RCT_EXPORT_MODULE()
+
 RCT_EXPORT_METHOD(registerWeixin:(NSString *)appId universalLink:(NSString *)universalLink) {
-    dispatch_async([self methodQueue], ^{
+    [self dispatch_main_block:^{
         // 注册微信
         [WXApi registerApp:appId universalLink:universalLink];
-    });
+    }];
 }
 
 RCT_EXPORT_METHOD(isWXAppInstalled:(RCTPromiseResolveBlock)succeed) {
-    BOOL result = [WXApi isWXAppInstalled];
-    succeed(@(result));
+    [self dispatch_main_block:^{
+        // 是否安装微信
+        BOOL result = [WXApi isWXAppInstalled];
+        succeed(@(result));
+    }];
 }
 
 RCT_EXPORT_METHOD(isQQInstalled:(RCTPromiseResolveBlock)succeed) {
-    BOOL result = [WXApi isWXAppInstalled];
-    succeed(@(result));
+    [self dispatch_main_block:^{
+        // 是否安装QQ
+        BOOL result = [TencentOAuth iphoneQQInstalled];
+        succeed(@(result));
+    }];
 }
 
 
 RCT_EXPORT_METHOD(shareToWeixin:(NSDictionary *)params
                   succeed:(RCTPromiseResolveBlock)succeed
                   failed:(RCTResponseErrorBlock)failed) {
-    dispatch_async([self methodQueue], ^{
+    [self dispatch_main_block:^{
         NSString *shareType = params[@"shareType"];
         
         WXMediaMessage *msg = [WXMediaMessage message];
@@ -163,7 +174,7 @@ RCT_EXPORT_METHOD(shareToWeixin:(NSDictionary *)params
                 break;
             }
         }
-    });
+    }];
 }
 
 - (void)handlerSuccess:(BOOL)success
