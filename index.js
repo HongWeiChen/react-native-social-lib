@@ -1,6 +1,12 @@
 
 import { NativeModules } from 'react-native';
 
-const { RNSocialManager } = NativeModules;
+const { RNSocialManagerModules } = NativeModules;
 
-export default RNSocialManager;
+export default class RNSocialManager {
+
+    static share(params, succeed, failed) {
+        RNSocialManagerModules.share(params, succeed, failed)
+    }
+
+};
