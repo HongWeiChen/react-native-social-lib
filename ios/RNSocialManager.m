@@ -25,7 +25,7 @@ static ShareToWeixinTypes getShareToWeixinTypes(NSString *string) {
         @"musicvideo": @(ShareToWeixinTypesMusicVideo),
         @"miniprogram": @(ShareToWeixinTypesMiniProgram)
     };
-    return (ShareToWeixinTypes)[map objectForKey:string];
+    return (ShareToWeixinTypes)[[map objectForKey:string] integerValue];
 }
 
 @implementation RNSocialManager
