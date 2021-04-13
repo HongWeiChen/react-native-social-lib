@@ -76,7 +76,9 @@ RCT_EXPORT_METHOD(shareToWeixin:(NSDictionary *)params
                   succeed:(RCTResponseSenderBlock)succeed
                   failed:(RCTResponseErrorBlock)failed) {
     [self dispatch_main_block:^{
-        RNSocialShareModel *shareModel = [[RNSocialShareModel alloc] initWithParams:params];
+        NSString *platform = params[@"platform"];
+        NSString *shareParams = params[@"shareParams"];
+        RNSocialShareModel *shareModel = [[RNSocialShareModel alloc] initWithPlatform:platform shareParams:shareParams];
         [shareModel shareWithSucceed:succeed failed:failed];
     }];
 }
