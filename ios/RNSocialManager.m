@@ -5,7 +5,7 @@
 
 #import "WXApi.h"
 
-//#import <TencentOpenAPI/TencentOpenApiUmbrellaHeader.h>
+#import <TencentOpenAPI/TencentOAuth.h>
 
 @implementation RNSocialManager
 
@@ -61,8 +61,8 @@ RCT_EXPORT_METHOD(isWXAppInstalled:(RCTPromiseResolveBlock)succeed) {
  */
 RCT_EXPORT_METHOD(isQQInstalled:(RCTPromiseResolveBlock)succeed) {
     [self dispatch_main_block:^{
-//        BOOL result = [TencentOAuth iphoneQQInstalled];
-//        succeed(@(result));
+        BOOL result = [TencentOAuth iphoneQQInstalled];
+        succeed(@(result));
     }];
 }
 
